@@ -2363,9 +2363,6 @@ img {
 </header>
 <nav class="tsd-navigation secondary">
 	<ul>
-		<li class=" tsd-kind-interface tsd-parent-kind-module">
-			<a href="../interfaces/_index_.dynamodbexpression.html" class="tsd-kind-icon">DynamoDBExpression</a>
-		</li>
 		<li class=" tsd-kind-function tsd-parent-kind-module">
 			<a href="_index_.html#dynamoexpr" class="tsd-kind-icon">dynamo<wbr>Expr</a>
 		</li>
@@ -2380,12 +2377,6 @@ img {
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
-					<section class="tsd-index-section ">
-						<h3>Interfaces</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_index_.dynamodbexpression.html" class="tsd-kind-icon">DynamoDBExpression</a></li>
-						</ul>
-					</section>
 					<section class="tsd-index-section ">
 						<h3>Functions</h3>
 						<ul class="tsd-index-list">
@@ -2402,25 +2393,30 @@ img {
 				<a name="dynamoexpr" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> dynamo<wbr>Expr</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">dynamo<wbr>Expr<span class="tsd-signature-symbol">(</span>literals<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>placeholers<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.dynamodbexpressionvalue.html" class="tsd-signature-type">DynamoDBExpressionValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_dynamo_expr_.dynamodbexpression.html" class="tsd-signature-type">DynamoDBExpression</a></li>
+					<li class="tsd-signature tsd-kind-icon">dynamo<wbr>Expr<span class="tsd-signature-symbol">(</span>literals<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>placeholers<span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.dynamoexpressionplaceholder.html" class="tsd-signature-type">DynamoExpressionPlaceholder</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">]</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/e524c50/src/dynamo-expr.ts#L9">dynamo-expr.ts:9</a></li>
+								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/8bb380a/src/dynamo-expr.ts#L7">dynamo-expr.ts:7</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Builds an expression and expression attribute values from template string.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>literals: <span class="tsd-signature-type">TemplateStringsArray</span></h5>
 							</li>
 							<li>
-								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>placeholers: <a href="../interfaces/_types_.dynamodbexpressionvalue.html" class="tsd-signature-type">DynamoDBExpressionValue</a><span class="tsd-signature-symbol">[]</span></h5>
+								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>placeholers: <a href="../interfaces/_types_.dynamoexpressionplaceholder.html" class="tsd-signature-type">DynamoExpressionPlaceholder</a><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/_dynamo_expr_.dynamodbexpression.html" class="tsd-signature-type">DynamoDBExpression</a></h4>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">]</span></h4>
 					</li>
 				</ul>
 			</section>
@@ -2428,15 +2424,20 @@ img {
 				<a name="val" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> val</h3>
 				<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-					<li class="tsd-signature tsd-kind-icon">val<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DynamoAttributeValue</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.dynamodbexpressionvalue.html" class="tsd-signature-type">DynamoDBExpressionValue</a></li>
+					<li class="tsd-signature tsd-kind-icon">val<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DynamoAttributeValue</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_types_.dynamoexpressionplaceholder.html" class="tsd-signature-type">DynamoExpressionPlaceholder</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/e524c50/src/val.ts#L4">val.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/8bb380a/src/val.ts#L7">val.ts:7</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Build a placeholder.</p>
+							</div>
+						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
@@ -2446,7 +2447,7 @@ img {
 								<h5>value: <span class="tsd-signature-type">DynamoAttributeValue</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="../interfaces/_types_.dynamodbexpressionvalue.html" class="tsd-signature-type">DynamoDBExpressionValue</a></h4>
+						<h4 class="tsd-returns-title">Returns <a href="../interfaces/_types_.dynamoexpressionplaceholder.html" class="tsd-signature-type">DynamoExpressionPlaceholder</a></h4>
 					</li>
 				</ul>
 			</section>
