@@ -4,10 +4,10 @@ import { val } from "../src/val";
 
 describe("dynamoExpr", () => {
   test("simple", () => {
-    const {
+    const [
       expression,
-      values: expressionAttributeValues,
-    } = dynamoExpr`SET Executing = ${val(
+      expressionAttributeValues,
+    ] = dynamoExpr`SET Executing = ${val(
       "v1",
       DynamoAttributeValue.fromBoolean(true)
     )}`;
@@ -18,10 +18,7 @@ describe("dynamoExpr", () => {
   });
 
   test("multiple", () => {
-    const {
-      expression,
-      values: expressionAttributeValues,
-    } = dynamoExpr`SET V1 = ${val(
+    const [expression, expressionAttributeValues] = dynamoExpr`SET V1 = ${val(
       "v1",
       DynamoAttributeValue.fromBoolean(true)
     )}, V2 = if_not_exists(V2, ${val(
