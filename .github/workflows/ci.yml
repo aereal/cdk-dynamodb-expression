@@ -36,26 +36,61 @@ jobs:
         run: yarn test:ci
         env:
           CI: true
-      - name: upload coverage
-        run: npx codecov
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: save coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: ./coverage
       - name: build
         run: yarn build
       - name: build docs
         if: github.ref == 'refs/heads/main'
         run: yarn docs
-      - name: publish docs
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v3
+      - name: save docs
+        uses: actions/upload-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          name: docs
+          path: ./docs
       - name: publish
         if: github.event_name == 'release'
         run: |
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  docs:
+    needs: ci
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: download docs artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: docs
+          path: ./docs
+      - run: ls -lAF
+      - name: publish docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+  coverage:
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      -
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - name: download coverage artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+          path: ./coverage
+      - run: ls -lAF
+      - name: upload coverage
+        run: npx codecov
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
