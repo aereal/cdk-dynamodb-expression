@@ -1,9 +1,12 @@
 import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
-import { DynamoDBExpressionValue } from "./types";
+import { DynamoExpressionPlaceholder } from "./types";
 
+/**
+ * Builds an expression and expression attribute values from template string.
+ */
 export const dynamoExpr = (
   literals: TemplateStringsArray,
-  ...placeholers: DynamoDBExpressionValue[]
+  ...placeholers: DynamoExpressionPlaceholder[]
 ): [expr: string, values: { [key: string]: DynamoAttributeValue }] => {
   let expression = "";
   const vs: { [key: string]: DynamoAttributeValue } = {};

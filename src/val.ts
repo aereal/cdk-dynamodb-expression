@@ -1,10 +1,13 @@
 import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
-import { DynamoDBExpressionValue } from "./types";
+import { DynamoExpressionPlaceholder } from "./types";
 
+/**
+ * Build a placeholder.
+ */
 export const val = (
   name: string,
   value: DynamoAttributeValue
-): DynamoDBExpressionValue => ({
+): DynamoExpressionPlaceholder => ({
   name,
   value,
 });
