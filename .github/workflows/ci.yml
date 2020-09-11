@@ -10,11 +10,6 @@ on:
     - cron: '0 1 * * *'
 jobs:
   ci:
-    strategy:
-      matrix:
-        node:
-          - '12.x'
-          - '14.x'
     runs-on: ubuntu-latest
     steps:
       - id: yarn-cache
@@ -29,7 +24,7 @@ jobs:
       -
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 14.x
       - name: install
         run: yarn install --frozen-lockfile
       - name: test
@@ -40,14 +35,13 @@ jobs:
         run: npx codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        if: matrix.node == '14.x' # only if LTS
       - name: build
         run: yarn build
       - name: build docs
-        if: github.ref == 'refs/heads/main' && matrix.node == '14.x'
+        if: github.ref == 'refs/heads/main'
         run: yarn docs
       - name: publish docs
-        if: github.ref == 'refs/heads/main' && matrix.node == '14.x'
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
