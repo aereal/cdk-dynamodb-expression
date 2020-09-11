@@ -128,6 +128,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "jest --collectCoverage --coverageDirectory ./coverage/"
   }
 }
