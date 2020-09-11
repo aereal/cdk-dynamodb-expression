@@ -1,7 +1,7 @@
 {
   "name": "@aereal/cdk-dynamodb-expression",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "built/index.js",
   "author": "aereal <aereal@aereal.org>",
   "license": "MIT",
   "peerDependencies": {
