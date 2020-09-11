@@ -2371,6 +2371,20 @@ img {
 			<a href="#cdk-dynamodb-expression" id="cdk-dynamodb-expression" style="color: inherit; text-decoration: none;">
 				<h1>cdk-dynamodb-expression</h1>
 			</a>
+			<a href="#synopsis" id="synopsis" style="color: inherit; text-decoration: none;">
+				<h2>Synopsis</h2>
+			</a>
+			<pre><code class="language-typescript"><span class="hljs-keyword">const</span> [
+  expression,
+  expressionAttributeValues,
+] = dynamoExpr<span class="hljs-string">`SET Executing = <span class="hljs-subst">${val(
+  <span class="hljs-string">"v1"</span>,
+  DynamoAttributeValue.fromBoolean(<span class="hljs-literal">true</span>)
+)}</span>`</span>;
+expect(expression).toBe(<span class="hljs-string">"SET Executing = :v1"</span>);
+expect(expressionAttributeValues).toStrictEqual({
+  <span class="hljs-string">":v1"</span>: DynamoAttributeValue.fromBoolean(<span class="hljs-literal">true</span>),
+});</code></pre>
 		</div>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
