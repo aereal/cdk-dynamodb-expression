@@ -1,0 +1,9 @@
+{
+  "mode": "library",
+  "theme": "minimal",
+  "excludeNotExported": true,
+  "excludeExternals": true,
+  "ignoreCompilerErrors": true,
+  "stripInternal": true,
+  "out": "./docs"
+}

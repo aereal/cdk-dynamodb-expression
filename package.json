@@ -131,6 +131,7 @@
   "scripts": {
     "build": "tsc -p .",
     "test": "jest",
-    "test:ci": "jest --collectCoverage --coverageDirectory ./coverage/"
+    "test:ci": "jest --collectCoverage --coverageDirectory ./coverage/",
+    "docs": "rm -rf docs/; typedoc ./src"
   }
 }
