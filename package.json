@@ -1,6 +1,6 @@
 {
   "name": "@aereal/cdk-dynamodb-expression",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "main": "built/index.js",
   "types": "built/index.d.ts",
   "author": "aereal <aereal@aereal.org>",
