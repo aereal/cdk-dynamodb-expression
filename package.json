@@ -2,6 +2,7 @@
   "name": "@aereal/cdk-dynamodb-expression",
   "version": "0.0.1",
   "main": "built/index.js",
+  "types": "built/index.d.ts",
   "author": "aereal <aereal@aereal.org>",
   "license": "MIT",
   "peerDependencies": {
@@ -144,7 +145,7 @@
     ]
   },
   "scripts": {
-    "build": "tsc -p .",
+    "build": "rm -rf built && tsc -p .",
     "test": "jest",
     "test:ci": "jest --collectCoverage --coverageDirectory ./coverage/",
     "docs": "rm -rf docs/; typedoc ./src"
