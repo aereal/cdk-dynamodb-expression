@@ -3,13 +3,13 @@
 ## Synopsis
 
 ```typescript
+import { dynamoExpr } from "@aereal/cdk-dynamodb-expression";
+import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
+
 const [
   expression,
   expressionAttributeValues,
-] = dynamoExpr`SET Executing = ${val(
-  "v1",
-  DynamoAttributeValue.fromBoolean(true)
-)}`;
+] = dynamoExpr`SET Executing = ${DynamoAttributeValue.fromBoolean(true)}`;
 expect(expression).toBe("SET Executing = :v1");
 expect(expressionAttributeValues).toStrictEqual({
   ":v1": DynamoAttributeValue.fromBoolean(true),
