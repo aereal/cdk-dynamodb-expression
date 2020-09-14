@@ -1,3 +1,0 @@
-var typedoc = typedoc || {};
-            typedoc.search = typedoc.search || {};
-            typedoc.search.data = {"kinds":{"1":"Module","64":"Function"},"rows":[{"id":0,"kind":1,"name":"\"counter\"","url":"modules/_counter_.html","classes":"tsd-kind-module"},{"id":1,"kind":1,"name":"\"dynamo-expr\"","url":"modules/_dynamo_expr_.html","classes":"tsd-kind-module"},{"id":2,"kind":64,"name":"dynamoExpr","url":"modules/_dynamo_expr_.html#dynamoexpr","classes":"tsd-kind-function tsd-parent-kind-module","parent":"\"dynamo-expr\""},{"id":3,"kind":1,"name":"\"index\"","url":"modules/_index_.html","classes":"tsd-kind-module"},{"id":4,"kind":64,"name":"dynamoExpr","url":"modules/_index_.html#dynamoexpr","classes":"tsd-kind-function tsd-parent-kind-module","parent":"\"index\""}]};
