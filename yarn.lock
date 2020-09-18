@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@aereal/eslint-config@^0.0.1-prerelease.2":
+  version "0.0.1-prerelease.2"
+  resolved "https://registry.yarnpkg.com/@aereal/eslint-config/-/eslint-config-0.0.1-prerelease.2.tgz#708bfa536026a4db2b86d65c10fd92c569a103e2"
+  integrity sha512-/MlMSLhv9+ZtH/P559FrpsX1jI6DsHQCy7vj/QoA3T9C/nBrHe5j7SQipe9WYGb0TGXZJMSb2Kl5Qdb1qANj/Q==
+
 "@aws-cdk/assets@1.62.0", "@aws-cdk/assets@^1.62.0":
   version "1.62.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/assets/-/assets-1.62.0.tgz#d90e553e09f204605b8d6a15a2c511295f02cf45"
