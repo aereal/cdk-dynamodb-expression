@@ -9,7 +9,7 @@
     "@aws-cdk/aws-stepfunctions-tasks": "^1.62.0"
   },
   "devDependencies": {
-    "@aereal/eslint-config": "^0.0.1-prerelease.2",
+    "@aereal/eslint-config": "^0.0.1-prerelease.3",
     "@aws-cdk/assets": "^1.62.0",
     "@aws-cdk/aws-apigateway": "^1.62.0",
     "@aws-cdk/aws-applicationautoscaling": "^1.62.0",
@@ -59,13 +59,13 @@
     "@aws-cdk/region-info": "^1.62.0",
     "@types/jest": "^26.0.13",
     "@types/node": "^14.10.1",
-    "@typescript-eslint/eslint-plugin": "^4.1.0",
-    "@typescript-eslint/parser": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
     "constructs": "^3.0.4",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsdoc": "^30.4.2",
+    "eslint-plugin-jsdoc": "^30.5.1",
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.4.2",
     "prettier": "^2.1.1",
@@ -75,57 +75,13 @@
   },
   "eslintConfig": {
     "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "plugin:import/errors",
-      "plugin:import/warnings",
-      "plugin:import/typescript",
-      "plugin:prettier/recommended",
-      "prettier/@typescript-eslint"
+      "@aereal/eslint-config/presets/typescript"
     ],
-    "plugins": [
-      "@typescript-eslint",
-      "import",
-      "jsdoc"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "env": {
-      "node": true,
-      "es6": true
-    },
     "parserOptions": {
       "ecmaVersion": 2018,
       "sourceType": "module",
       "createDefaultProgram": true,
       "project": "./tsconfig.json"
-    },
-    "rules": {
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": [
-            "test/**/*.ts"
-          ]
-        }
-      ],
-      "import/first": "error",
-      "import/order": "error",
-      "jsdoc/require-jsdoc": [
-        "error",
-        {
-          "publicOnly": true,
-          "require": {
-            "ArrowFunctionExpression": true,
-            "ClassDeclaration": true,
-            "MethodDefinition": true
-          },
-          "checkConstructors": false
-        }
-      ],
-      "jsdoc/require-param-type": 0,
-      "jsdoc/require-returns": 0
     }
   },
   "jest": {
