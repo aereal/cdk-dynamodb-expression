@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+      - release
   schedule:
     - cron: '0 1 * * *'
 jobs:
@@ -40,7 +41,7 @@ jobs:
       - name: build
         run: yarn build
       - name: build docs
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/release'
         run: yarn docs
       - name: save docs
         uses: actions/upload-artifact@v2
@@ -48,15 +49,22 @@ jobs:
           name: docs
           path: ./docs
       - name: release
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release'
         run: yarn semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
+      - name: create release pull request
+        if: github.ref == 'refs/heads/main'
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ github.token }}
+          title: Publish release
+          base: release
   docs:
     needs: ci
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/release'
     runs-on: ubuntu-latest
     steps:
       - name: download docs artifact
