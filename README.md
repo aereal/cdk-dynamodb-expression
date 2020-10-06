@@ -9,11 +9,14 @@ import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
 const builder = new ExpressionBuilder();
 const {
   expression,
+  expressionAttributeNames,
   expressionAttributeValues,
-} = builder.expr`SET Executing = ${DynamoAttributeValue.fromBoolean(true)}`;
-expect(expression).toBe("SET #0 = :v1");
+} = builder.expr`SET ${dynamoAttrName(
+  "Executing"
+)} = ${DynamoAttributeValue.fromBoolean(true)}`;
+expect(expression).toBe("SET #0 = :v0");
 expect(expressionAttributeValues).toStrictEqual({
-  ":v1": DynamoAttributeValue.fromBoolean(true),
+  ":v0": DynamoAttributeValue.fromBoolean(true),
 });
 expect(expressionAttributeNames).toStrictEqual({ "#0": "Executing" });
 ```
