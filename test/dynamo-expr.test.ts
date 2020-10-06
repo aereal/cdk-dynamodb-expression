@@ -1,4 +1,5 @@
 import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
+import { dynamoAttrName } from "../src/attribute-name";
 import { refCounter } from "../src/counter";
 import { dynamoExpr } from "../src/dynamo-expr";
 
@@ -30,5 +31,20 @@ describe("dynamoExpr", () => {
       ":v1": DynamoAttributeValue.fromBoolean(true),
       ":v2": DynamoAttributeValue.fromNumber(10),
     });
+  });
+
+  test("names", () => {
+    const {
+      expression,
+      expressionAttributeNames,
+      expressionAttributeValues,
+    } = dynamoExpr`SET ${dynamoAttrName(
+      "Executing"
+    )} = ${DynamoAttributeValue.fromBoolean(true)}`;
+    expect(expression).toBe("SET #0 = :v1");
+    expect(expressionAttributeValues).toStrictEqual({
+      ":v1": DynamoAttributeValue.fromBoolean(true),
+    });
+    expect(expressionAttributeNames).toStrictEqual({ "#0": "Executing" });
   });
 });

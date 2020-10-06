@@ -14,3 +14,8 @@ function* createRefCounter(): Generator<number, number, boolean> {
  * @internal
  */
 export const refCounter = createRefCounter();
+
+/**
+ * @internal
+ */
+export const namesRefCounter = createRefCounter();
