@@ -80,57 +80,13 @@
   },
   "eslintConfig": {
     "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "plugin:import/errors",
-      "plugin:import/warnings",
-      "plugin:import/typescript",
-      "plugin:prettier/recommended",
-      "prettier/@typescript-eslint"
+      "@aereal/eslint-config/presets/docs-typescript"
     ],
-    "plugins": [
-      "@typescript-eslint",
-      "import",
-      "jsdoc"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "env": {
-      "node": true,
-      "es6": true
-    },
     "parserOptions": {
       "ecmaVersion": 2018,
       "sourceType": "module",
       "createDefaultProgram": true,
       "project": "./tsconfig.json"
-    },
-    "rules": {
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": [
-            "test/**/*.ts"
-          ]
-        }
-      ],
-      "import/first": "error",
-      "import/order": "error",
-      "jsdoc/require-jsdoc": [
-        "error",
-        {
-          "publicOnly": true,
-          "require": {
-            "ArrowFunctionExpression": true,
-            "ClassDeclaration": true,
-            "MethodDefinition": true
-          },
-          "checkConstructors": false
-        }
-      ],
-      "jsdoc/require-param-type": 0,
-      "jsdoc/require-returns": 0
     }
   },
   "jest": {
