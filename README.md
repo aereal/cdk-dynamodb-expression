@@ -1,5 +1,7 @@
 # cdk-dynamodb-expression
 
+[DynamoDB expression][ddb-expr] builder for [AWS CDK][aws-cdk].
+
 ## Synopsis
 
 ```typescript
@@ -34,3 +36,6 @@ npm i -S @aereal/cdk-dynamodb-expression
 ## License
 
 MIT License
+
+[ddb-expr]: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.html
+[aws-cdk]: https://github.com/aws/aws-cdk
