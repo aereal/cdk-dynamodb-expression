@@ -1,5 +1,7 @@
 import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
-import { refCounter } from "./counter";
+import { DynamoAttributeName } from "./attribute-name";
+import { namesRefCounter, refCounter } from "./counter";
+import { Placeholder, isAttrName } from "./placeholder";
 
 export interface ExpressionAggregate {
   /**
@@ -11,6 +13,11 @@ export interface ExpressionAggregate {
    * attribute values that used to substitute expression's placeholders by DynamoDB.
    */
   readonly expressionAttributeValues: { [key: string]: DynamoAttributeValue };
+
+  /**
+   * attribute names that used to substitute expression's placeholders by DynamoDB.
+   */
+  readonly expressionAttributeNames: { [key: string]: DynamoAttributeName };
 }
 
 /**
@@ -18,17 +25,26 @@ export interface ExpressionAggregate {
  */
 export const dynamoExpr = (
   literals: TemplateStringsArray,
-  ...placeholers: DynamoAttributeValue[]
+  ...placeholers: Placeholder[]
 ): ExpressionAggregate => {
   let expression = "";
   const expressionAttributeValues: { [key: string]: DynamoAttributeValue } = {};
+  const expressionAttributeNames: { [key: string]: DynamoAttributeName } = {};
   placeholers.forEach((pv, idx) => {
-    const { value } = refCounter.next();
-    const ref = `:v${value}`;
-    expression += literals[idx];
-    expression += ref;
-    expressionAttributeValues[ref] = pv;
+    if (isAttrName(pv)) {
+      const { value } = namesRefCounter.next();
+      const placeholder = `#${value}`;
+      expression += literals[idx];
+      expression += placeholder;
+      expressionAttributeNames[placeholder] = pv;
+    } else {
+      const { value } = refCounter.next();
+      const ref = `:v${value}`;
+      expression += literals[idx];
+      expression += ref;
+      expressionAttributeValues[ref] = pv;
+    }
   });
   expression += literals[literals.length - 1];
-  return { expression, expressionAttributeValues };
+  return { expression, expressionAttributeValues, expressionAttributeNames };
 };
