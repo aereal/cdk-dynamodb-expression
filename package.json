@@ -151,5 +151,20 @@
     "test": "jest",
     "test:ci": "jest --collectCoverage --coverageDirectory ./coverage/",
     "docs": "rm -rf docs/; typedoc ./src"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
   }
 }
