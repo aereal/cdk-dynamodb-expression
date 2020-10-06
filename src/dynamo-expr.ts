@@ -1,11 +1,6 @@
 import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
 import { DynamoAttributeName } from "./attribute-name";
-import {
-  RefCounter,
-  createRefCounter,
-  namesRefCounter,
-  refCounter,
-} from "./counter";
+import { RefCounter, createRefCounter } from "./counter";
 import { Placeholder, isAttrName } from "./placeholder";
 
 export interface ExpressionAggregate {
@@ -71,32 +66,3 @@ export class ExpressionBuilder {
     return { expression, expressionAttributeValues, expressionAttributeNames };
   }
 }
-
-/**
- * Builds an expression and expression attribute values from template string.
- */
-export const dynamoExpr = (
-  literals: TemplateStringsArray,
-  ...placeholers: Placeholder[]
-): ExpressionAggregate => {
-  let expression = "";
-  const expressionAttributeValues: { [key: string]: DynamoAttributeValue } = {};
-  const expressionAttributeNames: { [key: string]: DynamoAttributeName } = {};
-  placeholers.forEach((pv, idx) => {
-    if (isAttrName(pv)) {
-      const { value } = namesRefCounter.next();
-      const placeholder = `#${value}`;
-      expression += literals[idx];
-      expression += placeholder;
-      expressionAttributeNames[placeholder] = pv;
-    } else {
-      const { value } = refCounter.next();
-      const ref = `:v${value}`;
-      expression += literals[idx];
-      expression += ref;
-      expressionAttributeValues[ref] = pv;
-    }
-  });
-  expression += literals[literals.length - 1];
-  return { expression, expressionAttributeValues, expressionAttributeNames };
-};

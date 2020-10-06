@@ -17,13 +17,3 @@ export function* createRefCounter(): RefCounter {
     }
   }
 }
-
-/**
- * @internal
- */
-export const refCounter = createRefCounter();
-
-/**
- * @internal
- */
-export const namesRefCounter = createRefCounter();
