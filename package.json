@@ -56,6 +56,7 @@
     "@aws-cdk/custom-resources": "^1.66.0",
     "@aws-cdk/cx-api": "^1.66.0",
     "@aws-cdk/region-info": "^1.66.0",
+    "@semantic-release/git": "^9.0.0",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.5",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
@@ -68,6 +69,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.4.2",
     "prettier": "^2.1.1",
+    "semantic-release": "^17.1.2",
     "ts-jest": "^26.3.0",
     "typedoc": "^0.19.1",
     "typescript": "^4.0.2"
@@ -149,5 +151,20 @@
     "test": "jest",
     "test:ci": "jest --collectCoverage --coverageDirectory ./coverage/",
     "docs": "rm -rf docs/; typedoc ./src"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
   }
 }
