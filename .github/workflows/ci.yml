@@ -55,6 +55,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}
+      - name: create release pull request
+        if: github.ref == 'refs/heads/main'
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ github.token }}
+          title: Publish release
+          base: release
   docs:
     needs: ci
     if: github.ref == 'refs/heads/release'
