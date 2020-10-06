@@ -8,10 +8,6 @@ on:
       - main
   schedule:
     - cron: '0 1 * * *'
-  release:
-    types:
-      - created
-      - edited
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -51,12 +47,13 @@ jobs:
         with:
           name: docs
           path: ./docs
-      - name: publish
-        if: github.event_name == 'release'
-        run: |
-          npm publish --access public
+      - name: release
+        if: github.ref == 'refs/heads/main'
+        run: yarn semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
   docs:
     needs: ci
     if: github.ref == 'refs/heads/main'
