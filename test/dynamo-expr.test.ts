@@ -1,49 +1,47 @@
 import { DynamoAttributeValue } from "@aws-cdk/aws-stepfunctions-tasks";
 import { dynamoAttrName } from "../src/attribute-name";
-import { refCounter } from "../src/counter";
-import { dynamoExpr } from "../src/dynamo-expr";
+import { ExpressionBuilder } from "../src/dynamo-expr";
 
 describe("dynamoExpr", () => {
-  beforeEach(() => {
-    refCounter.next(true);
-  });
-
   test("simple", () => {
+    const builder = new ExpressionBuilder();
     const {
       expression,
       expressionAttributeValues,
-    } = dynamoExpr`SET Executing = ${DynamoAttributeValue.fromBoolean(true)}`;
-    expect(expression).toBe("SET Executing = :v1");
+    } = builder.expr`SET Executing = ${DynamoAttributeValue.fromBoolean(true)}`;
+    expect(expression).toBe("SET Executing = :v0");
     expect(expressionAttributeValues).toStrictEqual({
-      ":v1": DynamoAttributeValue.fromBoolean(true),
+      ":v0": DynamoAttributeValue.fromBoolean(true),
     });
   });
 
   test("multiple", () => {
+    const builder = new ExpressionBuilder();
     const {
       expression,
       expressionAttributeValues,
-    } = dynamoExpr`SET V1 = ${DynamoAttributeValue.fromBoolean(
+    } = builder.expr`SET V1 = ${DynamoAttributeValue.fromBoolean(
       true
     )}, V2 = if_not_exists(V2, ${DynamoAttributeValue.fromNumber(10)})`;
-    expect(expression).toBe("SET V1 = :v1, V2 = if_not_exists(V2, :v2)");
+    expect(expression).toBe("SET V1 = :v0, V2 = if_not_exists(V2, :v1)");
     expect(expressionAttributeValues).toStrictEqual({
-      ":v1": DynamoAttributeValue.fromBoolean(true),
-      ":v2": DynamoAttributeValue.fromNumber(10),
+      ":v0": DynamoAttributeValue.fromBoolean(true),
+      ":v1": DynamoAttributeValue.fromNumber(10),
     });
   });
 
   test("names", () => {
+    const builder = new ExpressionBuilder();
     const {
       expression,
       expressionAttributeNames,
       expressionAttributeValues,
-    } = dynamoExpr`SET ${dynamoAttrName(
+    } = builder.expr`SET ${dynamoAttrName(
       "Executing"
     )} = ${DynamoAttributeValue.fromBoolean(true)}`;
-    expect(expression).toBe("SET #0 = :v1");
+    expect(expression).toBe("SET #0 = :v0");
     expect(expressionAttributeValues).toStrictEqual({
-      ":v1": DynamoAttributeValue.fromBoolean(true),
+      ":v0": DynamoAttributeValue.fromBoolean(true),
     });
     expect(expressionAttributeNames).toStrictEqual({ "#0": "Executing" });
   });
