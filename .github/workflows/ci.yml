@@ -96,8 +96,12 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: release
+      - run: |
+          git fetch origin main:main
+          git reset --hard main
       - name: create release pull request
-        if: github.ref == 'refs/heads/main'
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ github.token }}
