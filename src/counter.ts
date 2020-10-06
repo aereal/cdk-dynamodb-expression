@@ -1,7 +1,7 @@
 /**
  * @internal
  */
-export type RefCounter = Generator<number, number, boolean>;
+export type RefCounter = Generator<number, never, never>;
 
 /**
  * @internal
@@ -9,11 +9,7 @@ export type RefCounter = Generator<number, number, boolean>;
 export function* createRefCounter(): RefCounter {
   let n = 0;
   while (true) {
-    const shouldReset = yield n;
-    if (shouldReset) {
-      n = 0;
-    } else {
-      n++;
-    }
+    yield n;
+    n++;
   }
 }
