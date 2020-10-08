@@ -59,7 +59,7 @@
     "@aws-cdk/region-info": "^1.67.0",
     "@semantic-release/git": "^9.0.0",
     "@types/jest": "^26.0.14",
-    "@types/node": "^14.11.5",
+    "@types/node": "^14.11.6",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
     "constructs": "^3.0.4",
