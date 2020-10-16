@@ -17,7 +17,7 @@ export interface ExpressionAggregate {
   /**
    * attribute names that used to substitute expression's placeholders by DynamoDB.
    */
-  readonly expressionAttributeNames: { [key: string]: DynamoAttributeName };
+  readonly expressionAttributeNames?: { [key: string]: DynamoAttributeName };
 }
 
 /**
@@ -63,6 +63,13 @@ export class ExpressionBuilder {
       }
     });
     expression += literals[literals.length - 1];
-    return { expression, expressionAttributeValues, expressionAttributeNames };
+    return {
+      expression,
+      expressionAttributeValues,
+      expressionAttributeNames:
+        Object.keys(expressionAttributeNames).length === 0
+          ? undefined
+          : expressionAttributeNames,
+    };
   }
 }

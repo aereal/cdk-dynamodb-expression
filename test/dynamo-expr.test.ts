@@ -7,9 +7,11 @@ describe("dynamoExpr", () => {
     const builder = new ExpressionBuilder();
     const {
       expression,
+      expressionAttributeNames,
       expressionAttributeValues,
     } = builder.expr`SET Executing = ${DynamoAttributeValue.fromBoolean(true)}`;
     expect(expression).toBe("SET Executing = :v0");
+    expect(expressionAttributeNames).toBeUndefined();
     expect(expressionAttributeValues).toStrictEqual({
       ":v0": DynamoAttributeValue.fromBoolean(true),
     });
@@ -19,11 +21,13 @@ describe("dynamoExpr", () => {
     const builder = new ExpressionBuilder();
     const {
       expression,
+      expressionAttributeNames,
       expressionAttributeValues,
     } = builder.expr`SET V1 = ${DynamoAttributeValue.fromBoolean(
       true
     )}, V2 = if_not_exists(V2, ${DynamoAttributeValue.fromNumber(10)})`;
     expect(expression).toBe("SET V1 = :v0, V2 = if_not_exists(V2, :v1)");
+    expect(expressionAttributeNames).toBeUndefined();
     expect(expressionAttributeValues).toStrictEqual({
       ":v0": DynamoAttributeValue.fromBoolean(true),
       ":v1": DynamoAttributeValue.fromNumber(10),
