@@ -66,10 +66,11 @@ export class ExpressionBuilder {
     return {
       expression,
       expressionAttributeValues,
-      expressionAttributeNames:
-        Object.keys(expressionAttributeNames).length === 0
-          ? undefined
-          : expressionAttributeNames,
+      expressionAttributeNames: compactObject(expressionAttributeNames),
     };
   }
 }
+
+const compactObject = <T extends { [key: string]: unknown }>(
+  o: T
+): T | undefined => (Object.keys(o).length === 0 ? undefined : o);
