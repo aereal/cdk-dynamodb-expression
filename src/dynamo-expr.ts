@@ -115,6 +115,8 @@ export class ExpressionBuilder {
 
   /**
    * Builds an expression and expression attribute values from template string.
+   *
+   * @deprecated See `update`, `condition` and `aggregate`
    */
   public expr(
     literals: TemplateStringsArray,
