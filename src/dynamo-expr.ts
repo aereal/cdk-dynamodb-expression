@@ -3,6 +3,10 @@ import { DynamoAttributeName } from "./attribute-name";
 import { RefCounter, createRefCounter } from "./counter";
 import { Placeholder, isAttrName } from "./placeholder";
 
+type AttributeValues = { [key: string]: DynamoAttributeValue };
+
+type AttributeNames = { [key: string]: DynamoAttributeName };
+
 export interface ExpressionAggregate {
   /**
    * Built expression that contains calculated placeholders.
@@ -12,12 +16,12 @@ export interface ExpressionAggregate {
   /**
    * attribute values that used to substitute expression's placeholders by DynamoDB.
    */
-  readonly expressionAttributeValues: { [key: string]: DynamoAttributeValue };
+  readonly expressionAttributeValues: AttributeValues;
 
   /**
    * attribute names that used to substitute expression's placeholders by DynamoDB.
    */
-  readonly expressionAttributeNames?: { [key: string]: DynamoAttributeName };
+  readonly expressionAttributeNames?: AttributeNames;
 }
 
 /**
@@ -43,10 +47,8 @@ export class ExpressionBuilder {
     ...placeholers: Placeholder[]
   ): ExpressionAggregate {
     let expression = "";
-    const expressionAttributeValues: {
-      [key: string]: DynamoAttributeValue;
-    } = {};
-    const expressionAttributeNames: { [key: string]: DynamoAttributeName } = {};
+    const expressionAttributeValues: AttributeValues = {};
+    const expressionAttributeNames: AttributeNames = {};
     placeholers.forEach((pv, idx) => {
       if (isAttrName(pv)) {
         const { value } = this.namesRefCounter.next();
