@@ -84,7 +84,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
   create-release-pull-request:
-    needs: ci
+    needs: release
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
