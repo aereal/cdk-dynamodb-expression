@@ -50,12 +50,24 @@
 					<a href="_dynamo_expr_.expressionbuilder.html#constructor" class="tsd-kind-icon">constructor</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_dynamo_expr_.expressionbuilder.html#aggregate" class="tsd-kind-icon">aggregate</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_dynamo_expr_.expressionbuilder.html#condition" class="tsd-kind-icon">condition</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="_dynamo_expr_.expressionbuilder.html#expr" class="tsd-kind-icon">expr</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="_dynamo_expr_.expressionbuilder.html#update" class="tsd-kind-icon">update</a>
 				</li>
 			</ul>
 		</li>
 		<li class=" tsd-kind-interface tsd-parent-kind-module">
 			<a href="../interfaces/_dynamo_expr_.expressionaggregate.html" class="tsd-kind-icon">Expression<wbr>Aggregate</a>
+		</li>
+		<li class=" tsd-kind-interface tsd-parent-kind-module">
+			<a href="../interfaces/_dynamo_expr_.partialdynamoapicallprops.html" class="tsd-kind-icon">Partial<wbr>DynamoAPICall<wbr>Props</a>
 		</li>
 	</ul>
 </nav>
@@ -91,7 +103,10 @@
 					<section class="tsd-index-section ">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_dynamo_expr_.expressionbuilder.html#aggregate" class="tsd-kind-icon">aggregate</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_dynamo_expr_.expressionbuilder.html#condition" class="tsd-kind-icon">condition</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_dynamo_expr_.expressionbuilder.html#expr" class="tsd-kind-icon">expr</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="_dynamo_expr_.expressionbuilder.html#update" class="tsd-kind-icon">update</a></li>
 						</ul>
 					</section>
 				</div>
@@ -109,7 +124,7 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/ef52eac/src/dynamo-expr.ts#L31">dynamo-expr.ts:31</a></li>
+								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/bf5b918/src/dynamo-expr.ts#L59">dynamo-expr.ts:59</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-returns-title">Returns <a href="_dynamo_expr_.expressionbuilder.html" class="tsd-signature-type">ExpressionBuilder</a></h4>
@@ -120,6 +135,59 @@
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Methods</h2>
 			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="aggregate" class="tsd-anchor"></a>
+				<h3>aggregate</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">aggregate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_dynamo_expr_.partialdynamoapicallprops.html" class="tsd-signature-type">PartialDynamoAPICallProps</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/bf5b918/src/dynamo-expr.ts#L69">dynamo-expr.ts:69</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Returns merged expression attributes from added update expression and condition expression.</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <a href="../interfaces/_dynamo_expr_.partialdynamoapicallprops.html" class="tsd-signature-type">PartialDynamoAPICallProps</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="condition" class="tsd-anchor"></a>
+				<h3>condition</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">condition<span class="tsd-signature-symbol">(</span>literals<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>placeholders<span class="tsd-signature-symbol">: </span><a href="../modules/_placeholder_.html#placeholder" class="tsd-signature-type">Placeholder</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_dynamo_expr_.expressionaggregate.html" class="tsd-signature-type">ExpressionAggregate</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/bf5b918/src/dynamo-expr.ts#L107">dynamo-expr.ts:107</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Add condition expression.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>literals: <span class="tsd-signature-type">TemplateStringsArray</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>placeholders: <a href="../modules/_placeholder_.html#placeholder" class="tsd-signature-type">Placeholder</a><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../interfaces/_dynamo_expr_.expressionaggregate.html" class="tsd-signature-type">ExpressionAggregate</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 				<a name="expr" class="tsd-anchor"></a>
 				<h3>expr</h3>
 				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -129,13 +197,18 @@
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/ef52eac/src/dynamo-expr.ts#L41">dynamo-expr.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/bf5b918/src/dynamo-expr.ts#L121">dynamo-expr.ts:121</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>Builds an expression and expression attribute values from template string.</p>
 							</div>
+							<dl class="tsd-comment-tags">
+								<dt>deprecated</dt>
+								<dd><p>See <code>update</code>, <code>condition</code> and <code>aggregate</code></p>
+								</dd>
+							</dl>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
@@ -144,6 +217,37 @@
 							</li>
 							<li>
 								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>placeholers: <a href="../modules/_placeholder_.html#placeholder" class="tsd-signature-type">Placeholder</a><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../interfaces/_dynamo_expr_.expressionaggregate.html" class="tsd-signature-type">ExpressionAggregate</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="update" class="tsd-anchor"></a>
+				<h3>update</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>literals<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TemplateStringsArray</span>, <span class="tsd-signature-symbol">...</span>placeholders<span class="tsd-signature-symbol">: </span><a href="../modules/_placeholder_.html#placeholder" class="tsd-signature-type">Placeholder</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_dynamo_expr_.expressionaggregate.html" class="tsd-signature-type">ExpressionAggregate</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/aereal/cdk-dynamodb-expression/blob/bf5b918/src/dynamo-expr.ts#L95">dynamo-expr.ts:95</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Add update expression.</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>literals: <span class="tsd-signature-type">TemplateStringsArray</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>placeholders: <a href="../modules/_placeholder_.html#placeholder" class="tsd-signature-type">Placeholder</a><span class="tsd-signature-symbol">[]</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/_dynamo_expr_.expressionaggregate.html" class="tsd-signature-type">ExpressionAggregate</a></h4>
